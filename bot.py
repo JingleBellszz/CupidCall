@@ -29,6 +29,9 @@ async def on_ready():
     print(f"✅ Logged in as {bot.user}")
     await bot.db.initialize()  # สร้างฐานข้อมูลก่อนใช้
 
+    # ✅ กำหนด status ของบอท
+    await bot.change_presence(activity=discord.Game("🟢Online พร้อมให้บริการแล้ว"))
+
     success_count, failed_cogs = 0, []
 
     for filename in os.listdir("./cogs"):
@@ -55,5 +58,14 @@ async def on_ready():
             print(f"   - {cog}: {error}")
 
     print("✅ Cupid Call Online")
+
+    @tasks.loop(minutes=25)  # ทำงานทุกๆ 25 นาที
+    async def keep_alive():
+        channel = bot.get_channel(ใส่
+        channel
+        ID
+        ที่ต้องการให้บอทส่งข้อความ)
+        if channel:
+            await channel.send("🟢Online พร้อมให้บริการแล้ว")
 
 bot.run(TOKEN)
