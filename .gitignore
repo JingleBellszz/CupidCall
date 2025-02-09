@@ -1,1 +1,17 @@
-".env\ncredentials.json" 
+# ซ่อนไฟล์ข้อมูลสำคัญ
+.env
+credentials.json
+
+# ซ่อนฐานข้อมูล
+cupidcall.db
+cupidcall.db-shm
+cupidcall.db-wal
+
+# ซ่อนโฟลเดอร์และไฟล์ระบบ
+.venv/
+.idea/
+__pycache__/
+git-filter-repo/
+
+# ซ่อนไฟล์ติดตั้งและใช้งานใน Railway
+Procfile
