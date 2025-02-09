@@ -4,6 +4,8 @@ import asyncio
 from discord.ext import commands, tasks  
 from dotenv import load_dotenv
 from database import Database
+from google.oauth2 import service_account
+import gspread
 
 # ✅ โหลด .env ถ้าอยู่ในเครื่อง Local
 if os.path.exists('.env'):
@@ -14,6 +16,23 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 if not TOKEN:
     raise ValueError("❌ ไม่พบ DISCORD_TOKEN! กรุณาเพิ่มใน Railway Environment Variables")
+
+# ✅ ดึง CREDENTIALS_JSON จาก Environment Variables หรือ .env
+CREDENTIALS_JSON = os.getenv("CREDENTIALS_JSON")  # CREDENTIALS_JSON ในรูปแบบ base64 หรือเป็น path ไฟล์
+if not CREDENTIALS_JSON:
+    raise ValueError("❌ ไม่พบ CREDENTIALS_JSON! กรุณาเพิ่มใน Railway Environment Variables")
+
+# ถ้าค่า CREDENTIALS_JSON เป็น Path ของไฟล์ JSON, คุณสามารถใช้ได้โดยตรง
+if os.path.exists(CREDENTIALS_JSON):
+    creds = service_account.Credentials.from_service_account_file(CREDENTIALS_JSON)
+else:
+    # หาก CREDENTIALS_JSON เป็นข้อมูล base64 สามารถแปลงเป็นไฟล์ชั่วคราวได้
+    import base64
+    from io import BytesIO
+
+    creds_data = base64.b64decode(CREDENTIALS_JSON)
+    creds_file = BytesIO(creds_data)
+    creds = service_account.Credentials.from_service_account_file(creds_file)
 
 # ตั้งค่าบอทพร้อม Intents
 intents = discord.Intents.default()
