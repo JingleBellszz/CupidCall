@@ -34,7 +34,7 @@ async def on_ready():
     await bot.db.initialize()  # สร้างฐานข้อมูลก่อนใช้
 
     # ✅ กำหนด status ของบอท
-    await bot.change_presence(activity=discord.Game("🟢Online พร้อมให้บริการแล้ว"))
+    await bot.change_presence(activity=discord.Game("กับใจคุณ"))
 
     success_count, failed_cogs = 0, []
 
