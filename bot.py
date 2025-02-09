@@ -1,11 +1,7 @@
 import discord
 import os
 import asyncio
-<<<<<<< HEAD
-from discord.ext import commands, tasks
-=======
 from discord.ext import commands, tasks  
->>>>>>> 07d671ece4baacd6f5e2e05d8b7cc69f3249e014
 from dotenv import load_dotenv
 from database import Database
 
