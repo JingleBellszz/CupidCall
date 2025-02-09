@@ -13,5 +13,3 @@ cupidcall.db-wal
 __pycache__/
 git-filter-repo/
 
-# ซ่อนไฟล์ติดตั้งและใช้งานใน Railway
-Procfile
