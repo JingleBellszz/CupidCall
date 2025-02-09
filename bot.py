@@ -61,11 +61,8 @@ async def on_ready():
 
     @tasks.loop(minutes=25)  # ทำงานทุกๆ 25 นาที
     async def keep_alive():
-        channel = bot.get_channel(ใส่
-        channel
-        ID
-        ที่ต้องการให้บอทส่งข้อความ)
+        channel = bot.get_channel(1335980962189672509)
         if channel:
-            await channel.send("🟢Online พร้อมให้บริการแล้ว")
+            await channel.send("🟢Online CupidCall ยังทำงานอยู่!")
 
 bot.run(TOKEN)
